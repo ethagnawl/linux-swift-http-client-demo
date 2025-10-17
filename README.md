@@ -7,3 +7,5 @@ Target: x86_64-unknown-linux-gnu
 Build: `swift build`
 
 Run: `./.build/debug/swift-experiment`
+
+Currently, the application makes an HTTP POST request to a publicly available endpoint, prints the response and exits but it *might* be useful as a skeleton for anyone looking to poke at Swift on Linux.

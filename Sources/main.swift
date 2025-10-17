@@ -29,15 +29,14 @@ let semaphore = DispatchSemaphore(value: 0)
 let task = URLSession.shared.dataTask(with: request) { data, response, error in
     if let error = error {
         print("Error: \(error)")
-        return
-    }
+    } else {
+        if let response = response as? HTTPURLResponse {
+            print("Response status code: \(response.statusCode)")
+        }
 
-    if let response = response as? HTTPURLResponse {
-        print("Response status code: \(response.statusCode)")
-    }
-
-    if let data = data, let responseBody = String(data: data, encoding: .utf8) {
-        print("Response body: \(responseBody)")
+        if let data = data, let responseBody = String(data: data, encoding: .utf8) {
+            print("Response body: \(responseBody)")
+        }
     }
 
     semaphore.signal()
